@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"gorm.io/gen/rawsql_driver"
+	"github.com/miseyu/gen/rawsql_driver"
 	"gorm.io/gorm"
 )
 

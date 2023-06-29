@@ -5,15 +5,15 @@ Install GEN as a binary tool
 ## install
 
 ```shell
- go install gorm.io/gen/tools/gentool@latest
+ go install github.com/miseyu/gen/tools/gentool@latest
 ```
 
 ## usage
 
 ```shell
- 
- gentool -h  
- 
+
+ gentool -h
+
  Usage of gentool:
   -db string
         input mysql|postgres|sqlite|sqlserver|clickhouse. consult[https://gorm.io/docs/connecting_to_the_database.html] (default "mysql")

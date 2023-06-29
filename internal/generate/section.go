@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"gorm.io/gen/internal/model"
+	"github.com/miseyu/gen/internal/model"
 )
 
 // NewSection create and initialize Sections

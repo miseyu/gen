@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gorm.io/gen"
-	"gorm.io/gen/examples/conf"
-	"gorm.io/gen/examples/dal"
+	"github.com/miseyu/gen"
+	"github.com/miseyu/gen/examples/conf"
+	"github.com/miseyu/gen/examples/dal"
 )
 
 func init() {
