@@ -132,6 +132,11 @@ func NewTime(table, column string, opts ...Option) Time {
 	return Time{expr: expr{col: toColumn(table, column, opts...)}}
 }
 
+// NewRaw ...
+func NewRaw(raw string) Raw {
+	return Raw{expr: expr{e: clause.NamedExpr{SQL: raw}}}
+}
+
 func toColumn(table, column string, opts ...Option) clause.Column {
 	col := clause.Column{Table: table, Name: column}
 	for _, opt := range opts {
