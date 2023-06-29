@@ -1,4 +1,4 @@
-module gorm.io/gen/rawsql_driver
+module github.com/miseyu/gen/rawsql_driver
 
 go 1.18
 

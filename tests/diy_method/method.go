@@ -3,7 +3,7 @@ package diy_method
 import (
 	"time"
 
-	"gorm.io/gen"
+	"github.com/miseyu/gen"
 )
 
 type InsertMethod interface {

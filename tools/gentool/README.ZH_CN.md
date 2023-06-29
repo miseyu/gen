@@ -7,15 +7,15 @@
 ## 安装
 
 ```shell
- go install gorm.io/gen/tools/gentool@latest
+ go install github.com/miseyu/gen/tools/gentool@latest
 ```
 
 ## 使用方式
 
 ```shell
- 
- gentool -h  
- 
+
+ gentool -h
+
  Usage of gentool:
   -db string
         input mysql or postgres or sqlite or sqlserver. consult[https://gorm.io/docs/connecting_to_the_database.html] (default "mysql")
