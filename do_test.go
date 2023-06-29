@@ -147,8 +147,8 @@ func TestDO_methods(t *testing.T) {
 			Result:       "WHERE `name` = ? AND `age` > ?",
 		},
 		{
-			Expr:   u.Order(u.ID),
-			Result: "ORDER BY `id`",
+			Expr:   u.Order(field.NewRaw("RAND()").Desc()),
+			Result: "ORDER BY RAND() DESC",
 		},
 		{
 			Expr:   u.Order(u.ID.Desc()),
