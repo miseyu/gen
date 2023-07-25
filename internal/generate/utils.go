@@ -59,3 +59,11 @@ func uncaptialize(s string) string {
 
 	return strings.ToLower(s[:1]) + s[1:]
 }
+
+func capitalize(s string) string {
+	if s == "" {
+		return ""
+	}
+
+	return strings.ToUpper(s[:1]) + s[1:]
+}
