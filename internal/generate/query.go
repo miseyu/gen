@@ -30,6 +30,7 @@ type QueryStructMeta struct {
 	FileName        string // generated file name
 	S               string // the first letter(lower case)of simple Name (receiver)
 	QueryStructName string // internal query struct name
+	QueryDoName     string // query do struct name
 	ModelStructName string // origin/model struct name
 	TableName       string // table name in db server
 	StructInfo      parser.Param
