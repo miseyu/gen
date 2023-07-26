@@ -220,7 +220,7 @@ func (b *QueryStructMeta) ReturnObject() string {
 	if b.interfaceMode {
 		return fmt.Sprint("I", b.ModelStructName, "Do")
 	}
-	return fmt.Sprint("*", b.QueryStructName, "Do")
+	return fmt.Sprint("*", b.QueryDoName, "Do")
 }
 
 func isStructType(data reflect.Value) bool {
