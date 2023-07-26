@@ -4,7 +4,7 @@ const (
 	// TableQueryStruct table query struct
 	TableQueryStruct = createMethod + `
 	type {{.QueryStructName}} struct {
-		{{.QueryStructName}}Do
+		{{.QueryDoName}}Do
 		` + fields + `
 	}
 	` + tableMethod + asMethond + updateFieldMethod + getFieldMethod + fillFieldMapMethod + cloneMethod + replaceMethod + relationship + defineMethodStruct
@@ -12,18 +12,18 @@ const (
 	// TableQueryStructWithContext table query struct with context
 	TableQueryStructWithContext = createMethod + `
 	type {{.QueryStructName}} struct {
-		{{.QueryStructName}}Do {{.QueryStructName}}Do
+		{{.QueryDoName}}Do {{.QueryDoName}}Do
 		` + fields + `
 	}
 	` + tableMethod + asMethond + updateFieldMethod + `
-	
-	func ({{.S}} *{{.QueryStructName}}) WithContext(ctx context.Context) {{.ReturnObject}} { return {{.S}}.{{.QueryStructName}}Do.WithContext(ctx)}
 
-	func ({{.S}} {{.QueryStructName}}) TableName() string { return {{.S}}.{{.QueryStructName}}Do.TableName() } 
+	func ({{.S}} *{{.QueryStructName}}) WithContext(ctx context.Context) {{.ReturnObject}} { return {{.S}}.{{.QueryDoName}}Do.WithContext(ctx)}
 
-	func ({{.S}} {{.QueryStructName}}) Alias() string { return {{.S}}.{{.QueryStructName}}Do.Alias() }
+	func ({{.S}} {{.QueryStructName}}) TableName() string { return {{.S}}.{{.QueryDoName}}Do.TableName() }
 
-	func ({{.S}} {{.QueryStructName}}) Columns(cols ...field.Expr) gen.Columns { return {{.S}}.{{.QueryStructName}}Do.Columns(cols...) }
+	func ({{.S}} {{.QueryStructName}}) Alias() string { return {{.S}}.{{.QueryDoName}}Do.Alias() }
+
+	func ({{.S}} {{.QueryStructName}}) Columns(cols ...field.Expr) gen.Columns { return {{.S}}.{{.QueryDoName}}Do.Columns(cols...) }
 
 	` + getFieldMethod + fillFieldMapMethod + cloneMethod + replaceMethod + relationship + defineMethodStruct
 
@@ -35,11 +35,11 @@ const (
 	createMethod = `
 	func new{{.ModelStructName}}(db *gorm.DB, opts ...gen.DOOption) {{.QueryStructName}} {
 		_{{.QueryStructName}} := {{.QueryStructName}}{}
-	
-		_{{.QueryStructName}}.{{.QueryStructName}}Do.UseDB(db,opts...)
-		_{{.QueryStructName}}.{{.QueryStructName}}Do.UseModel(&{{.StructInfo.Package}}.{{.StructInfo.Type}}{})
-	
-		tableName := _{{.QueryStructName}}.{{.QueryStructName}}Do.TableName()
+
+		_{{.QueryStructName}}.{{.QueryDoName}}Do.UseDB(db,opts...)
+		_{{.QueryStructName}}.{{.QueryDoName}}Do.UseModel(&{{.StructInfo.Package}}.{{.StructInfo.Type}}{})
+
+		tableName := _{{.QueryStructName}}.{{.QueryDoName}}Do.TableName()
 		_{{$.QueryStructName}}.ALL = field.NewAsterisk(tableName)
 		{{range .Fields -}}
 		{{if not .IsRelation -}}
@@ -54,7 +54,7 @@ const (
 		{{end}}
 
 		_{{$.QueryStructName}}.fillFieldMap()
-		
+
 		return _{{.QueryStructName}}
 	}
 	`
@@ -76,27 +76,27 @@ const (
 	fieldMap  map[string]field.Expr
 `
 	tableMethod = `
-func ({{.S}} {{.QueryStructName}}) Table(newTableName string) *{{.QueryStructName}} { 
-	{{.S}}.{{.QueryStructName}}Do.UseTable(newTableName)
+func ({{.S}} {{.QueryStructName}}) Table(newTableName string) *{{.QueryStructName}} {
+	{{.S}}.{{.QueryDoName}}Do.UseTable(newTableName)
 	return {{.S}}.updateTableName(newTableName)
 }
 `
 
-	asMethond = `	
-func ({{.S}} {{.QueryStructName}}) As(alias string) *{{.QueryStructName}} { 
-	{{.S}}.{{.QueryStructName}}Do.DO = *({{.S}}.{{.QueryStructName}}Do.As(alias).(*gen.DO))
+	asMethond = `
+func ({{.S}} {{.QueryStructName}}) As(alias string) *{{.QueryStructName}} {
+	{{.S}}.{{.QueryDoName}}Do.DO = *({{.S}}.{{.QueryDoName}}Do.As(alias).(*gen.DO))
 	return {{.S}}.updateTableName(alias)
 }
 `
 	updateFieldMethod = `
-func ({{.S}} *{{.QueryStructName}}) updateTableName(table string) *{{.QueryStructName}} { 
+func ({{.S}} *{{.QueryStructName}}) updateTableName(table string) *{{.QueryStructName}} {
 	{{.S}}.ALL = field.NewAsterisk(table)
 	{{range .Fields -}}
 	{{if not .IsRelation -}}
 		{{- if .ColumnName -}}{{$.S}}.{{.Name}} = field.New{{.GenType}}(table, "{{.ColumnName}}"){{- end -}}
 	{{end}}
 	{{end}}
-	
+
 	{{.S}}.fillFieldMap()
 
 	return {{.S}}
@@ -105,13 +105,13 @@ func ({{.S}} *{{.QueryStructName}}) updateTableName(table string) *{{.QueryStruc
 
 	cloneMethod = `
 func ({{.S}} {{.QueryStructName}}) clone(db *gorm.DB) {{.QueryStructName}} {
-	{{.S}}.{{.QueryStructName}}Do.ReplaceConnPool(db.Statement.ConnPool)
+	{{.S}}.{{.QueryDoName}}Do.ReplaceConnPool(db.Statement.ConnPool)
 	return {{.S}}
 }
 `
 	replaceMethod = `
 func ({{.S}} {{.QueryStructName}}) replaceDB(db *gorm.DB) {{.QueryStructName}} {
-	{{.S}}.{{.QueryStructName}}Do.ReplaceDB(db)
+	{{.S}}.{{.QueryDoName}}Do.ReplaceDB(db)
 	return {{.S}}
 }
 `
@@ -129,7 +129,7 @@ func ({{.S}} *{{.QueryStructName}}) GetFieldByName(fieldName string) (field.Orde
 		`{{- $relation := .Relation }}{{- $relationship := $relation.RelationshipName}}` +
 		relationStruct + relationTx +
 		`{{end}}{{end}}`
-	defineMethodStruct = `type {{.QueryStructName}}Do struct { gen.DO }`
+	defineMethodStruct = `type {{.QueryDoName}}Do struct { gen.DO }`
 
 	fillFieldMapMethod = `
 func ({{.S}} *{{.QueryStructName}}) fillFieldMap() {
@@ -215,9 +215,9 @@ const (
 	relationStruct = `
 type {{$.QueryStructName}}{{$relationship}}{{$relation.Name}} struct{
 	db *gorm.DB
-	
+
 	field.RelationField
-	
+
 	{{$relation.StructField}}
 }
 

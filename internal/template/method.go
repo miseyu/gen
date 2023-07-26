@@ -29,119 +29,119 @@ func ({{.S}} {{.TargetStruct}}Do){{.FuncSign}}{
 
 // CRUDMethod CRUD method
 const CRUDMethod = `
-func ({{.S}} {{.QueryStructName}}Do) Debug() {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Debug() {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Debug())
 }
 
-func ({{.S}} {{.QueryStructName}}Do) WithContext(ctx context.Context) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) WithContext(ctx context.Context) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.WithContext(ctx))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) ReadDB() {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) ReadDB() {{.ReturnObject}} {
 	return {{.S}}.Clauses(dbresolver.Read)
 }
 
-func ({{.S}} {{.QueryStructName}}Do) WriteDB() {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) WriteDB() {{.ReturnObject}} {
 	return {{.S}}.Clauses(dbresolver.Write)
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Session(config *gorm.Session) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Session(config *gorm.Session) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Session(config))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Clauses(conds ...clause.Expression) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Clauses(conds ...clause.Expression) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Clauses(conds...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Returning(value interface{}, columns ...string) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Returning(value interface{}, columns ...string) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Returning(value, columns...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Not(conds ...gen.Condition) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Not(conds ...gen.Condition) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Not(conds...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Or(conds ...gen.Condition) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Or(conds ...gen.Condition) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Or(conds...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Select(conds ...field.Expr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Select(conds ...field.Expr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Select(conds...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Where(conds ...gen.Condition) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Where(conds ...gen.Condition) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Where(conds...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Order(conds ...field.Expr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Order(conds ...field.Expr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Order(conds...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Distinct(cols ...field.Expr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Distinct(cols ...field.Expr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Distinct(cols...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Omit(cols ...field.Expr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Omit(cols ...field.Expr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Omit(cols...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Join(table schema.Tabler, on ...field.Expr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Join(table schema.Tabler, on ...field.Expr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Join(table, on...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) LeftJoin(table schema.Tabler, on ...field.Expr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) LeftJoin(table schema.Tabler, on ...field.Expr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.LeftJoin(table, on...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) RightJoin(table schema.Tabler, on ...field.Expr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) RightJoin(table schema.Tabler, on ...field.Expr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.RightJoin(table, on...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Group(cols ...field.Expr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Group(cols ...field.Expr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Group(cols...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Having(conds ...gen.Condition) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Having(conds ...gen.Condition) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Having(conds...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Limit(limit int) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Limit(limit int) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Limit(limit))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Offset(offset int) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Offset(offset int) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Offset(offset))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Scopes(funcs ...func(gen.Dao) gen.Dao) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Scopes(funcs ...func(gen.Dao) gen.Dao) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Scopes(funcs...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Unscoped() {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Unscoped() {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Unscoped())
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Create(values ...*{{.StructInfo.Package}}.{{.StructInfo.Type}}) error {
+func ({{.S}} {{.QueryDoName}}Do) Create(values ...*{{.StructInfo.Package}}.{{.StructInfo.Type}}) error {
 	if len(values) == 0 {
 		return nil
 	}
 	return {{.S}}.DO.Create(values)
 }
 
-func ({{.S}} {{.QueryStructName}}Do) CreateInBatches(values []*{{.StructInfo.Package}}.{{.StructInfo.Type}}, batchSize int) error {
+func ({{.S}} {{.QueryDoName}}Do) CreateInBatches(values []*{{.StructInfo.Package}}.{{.StructInfo.Type}}, batchSize int) error {
 	return {{.S}}.DO.CreateInBatches(values, batchSize)
 }
 
 // Save : !!! underlying implementation is different with GORM
 // The method is equivalent to executing the statement: db.Clauses(clause.OnConflict{UpdateAll: true}).Create(values)
-func ({{.S}} {{.QueryStructName}}Do) Save(values ...*{{.StructInfo.Package}}.{{.StructInfo.Type}}) error {
+func ({{.S}} {{.QueryDoName}}Do) Save(values ...*{{.StructInfo.Package}}.{{.StructInfo.Type}}) error {
 	if len(values) == 0 {
 		return nil
 	}
 	return {{.S}}.DO.Save(values)
 }
 
-func ({{.S}} {{.QueryStructName}}Do) First() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
+func ({{.S}} {{.QueryDoName}}Do) First() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
 	if result, err := {{.S}}.DO.First(); err != nil {
 		return nil, err
 	} else {
@@ -149,7 +149,7 @@ func ({{.S}} {{.QueryStructName}}Do) First() (*{{.StructInfo.Package}}.{{.Struct
 	}
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Take() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
+func ({{.S}} {{.QueryDoName}}Do) Take() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
 	if result, err := {{.S}}.DO.Take(); err != nil {
 		return nil, err
 	} else {
@@ -157,7 +157,7 @@ func ({{.S}} {{.QueryStructName}}Do) Take() (*{{.StructInfo.Package}}.{{.StructI
 	}
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Last() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
+func ({{.S}} {{.QueryDoName}}Do) Last() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
 	if result, err := {{.S}}.DO.Last(); err != nil {
 		return nil, err
 	} else {
@@ -165,12 +165,12 @@ func ({{.S}} {{.QueryStructName}}Do) Last() (*{{.StructInfo.Package}}.{{.StructI
 	}
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Find() ([]*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
+func ({{.S}} {{.QueryDoName}}Do) Find() ([]*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
 	result, err := {{.S}}.DO.Find()
 	return result.([]*{{.StructInfo.Package}}.{{.StructInfo.Type}}), err
 }
 
-func ({{.S}} {{.QueryStructName}}Do) FindInBatch(batchSize int, fc func(tx gen.Dao, batch int) error) (results []*{{.StructInfo.Package}}.{{.StructInfo.Type}}, err error) {
+func ({{.S}} {{.QueryDoName}}Do) FindInBatch(batchSize int, fc func(tx gen.Dao, batch int) error) (results []*{{.StructInfo.Package}}.{{.StructInfo.Type}}, err error) {
 	buf := make([]*{{.StructInfo.Package}}.{{.StructInfo.Type}}, 0, batchSize)
 	err = {{.S}}.DO.FindInBatches(&buf, batchSize, func(tx gen.Dao, batch int) error {
 		defer func() { results = append(results, buf...) }()
@@ -179,33 +179,33 @@ func ({{.S}} {{.QueryStructName}}Do) FindInBatch(batchSize int, fc func(tx gen.D
 	return results, err
 }
 
-func ({{.S}} {{.QueryStructName}}Do) FindInBatches(result *[]*{{.StructInfo.Package}}.{{.StructInfo.Type}}, batchSize int, fc func(tx gen.Dao, batch int) error) error {
+func ({{.S}} {{.QueryDoName}}Do) FindInBatches(result *[]*{{.StructInfo.Package}}.{{.StructInfo.Type}}, batchSize int, fc func(tx gen.Dao, batch int) error) error {
 	return {{.S}}.DO.FindInBatches(result, batchSize, fc)
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Attrs(attrs ...field.AssignExpr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Attrs(attrs ...field.AssignExpr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Attrs(attrs...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Assign(attrs ...field.AssignExpr) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Assign(attrs ...field.AssignExpr) {{.ReturnObject}} {
 	return {{.S}}.withDO({{.S}}.DO.Assign(attrs...))
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Joins(fields ...field.RelationField) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Joins(fields ...field.RelationField) {{.ReturnObject}} {
 	for _, _f := range fields {
         {{.S}} = *{{.S}}.withDO({{.S}}.DO.Joins(_f))
     }
 	return &{{.S}}
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Preload(fields ...field.RelationField) {{.ReturnObject}} {
+func ({{.S}} {{.QueryDoName}}Do) Preload(fields ...field.RelationField) {{.ReturnObject}} {
     for _, _f := range fields {
         {{.S}} = *{{.S}}.withDO({{.S}}.DO.Preload(_f))
     }
 	return &{{.S}}
 }
 
-func ({{.S}} {{.QueryStructName}}Do) FirstOrInit() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
+func ({{.S}} {{.QueryDoName}}Do) FirstOrInit() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
 	if result, err := {{.S}}.DO.FirstOrInit(); err != nil {
 		return nil, err
 	} else {
@@ -213,7 +213,7 @@ func ({{.S}} {{.QueryStructName}}Do) FirstOrInit() (*{{.StructInfo.Package}}.{{.
 	}
 }
 
-func ({{.S}} {{.QueryStructName}}Do) FirstOrCreate() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
+func ({{.S}} {{.QueryDoName}}Do) FirstOrCreate() (*{{.StructInfo.Package}}.{{.StructInfo.Type}}, error) {
 	if result, err := {{.S}}.DO.FirstOrCreate(); err != nil {
 		return nil, err
 	} else {
@@ -221,7 +221,7 @@ func ({{.S}} {{.QueryStructName}}Do) FirstOrCreate() (*{{.StructInfo.Package}}.{
 	}
 }
 
-func ({{.S}} {{.QueryStructName}}Do) FindByPage(offset int, limit int) (result []*{{.StructInfo.Package}}.{{.StructInfo.Type}}, count int64, err error) {
+func ({{.S}} {{.QueryDoName}}Do) FindByPage(offset int, limit int) (result []*{{.StructInfo.Package}}.{{.StructInfo.Type}}, count int64, err error) {
 	result, err = {{.S}}.Offset(offset).Limit(limit).Find()
 	if err != nil{
 		return
@@ -236,7 +236,7 @@ func ({{.S}} {{.QueryStructName}}Do) FindByPage(offset int, limit int) (result [
 	return
 }
 
-func ({{.S}} {{.QueryStructName}}Do) ScanByPage(result interface{}, offset int, limit int) (count int64, err error) {
+func ({{.S}} {{.QueryDoName}}Do) ScanByPage(result interface{}, offset int, limit int) (count int64, err error) {
 	count, err = {{.S}}.Count()
 	if err != nil {
 		return
@@ -246,15 +246,15 @@ func ({{.S}} {{.QueryStructName}}Do) ScanByPage(result interface{}, offset int, 
 	return
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Scan(result interface{}) (err error) {
+func ({{.S}} {{.QueryDoName}}Do) Scan(result interface{}) (err error) {
 	return {{.S}}.DO.Scan(result)
 }
 
-func ({{.S}} {{.QueryStructName}}Do) Delete(models ...*{{.StructInfo.Package}}.{{.StructInfo.Type}}) (result gen.ResultInfo, err error) {
+func ({{.S}} {{.QueryDoName}}Do) Delete(models ...*{{.StructInfo.Package}}.{{.StructInfo.Type}}) (result gen.ResultInfo, err error) {
 	return {{.S}}.DO.Delete(models)
 }
 
-func ({{.S}} *{{.QueryStructName}}Do) withDO(do gen.Dao) (*{{.QueryStructName}}Do) {
+func ({{.S}} *{{.QueryDoName}}Do) withDO(do gen.Dao) (*{{.QueryDoName}}Do) {
 	{{.S}}.DO = *do.(*gen.DO)
 	return {{.S}}
 }
@@ -282,7 +282,7 @@ func Test_{{.QueryStructName}}Query(t *testing.T) {
 		t.Error("clean table <{{.TableName}}> fail:", err)
 		return
 	}
-	
+
 	_, ok := {{.QueryStructName}}.GetFieldByName("")
 	if ok {
 		t.Error("GetFieldByName(\"\") from {{.QueryStructName}} success")
@@ -357,7 +357,7 @@ func Test_{{.QueryStructName}}Query(t *testing.T) {
 	if err != nil {
 		t.Error("FindByPage() on table <{{.TableName}}> fail:", err)
 	}
-	
+
 	_, err = _do.ScanByPage(&{{.StructInfo.Package}}.{{.ModelStructName}}{}, 0, 1)
 	if err != nil {
 		t.Error("ScanByPage() on table <{{.TableName}}> fail:", err)
@@ -372,7 +372,7 @@ func Test_{{.QueryStructName}}Query(t *testing.T) {
 	if err != nil {
 		t.Error("FirstOrCreate() on table <{{.TableName}}> fail:", err)
 	}
-	
+
 	var _a _another
 	var _aPK = field.NewString(_a.TableName(), clause.PrimaryKey)
 
@@ -385,7 +385,7 @@ func Test_{{.QueryStructName}}Query(t *testing.T) {
 	if err != nil {
 		t.Error("LeftJoin() on table <{{.TableName}}> fail:", err)
 	}
-	
+
 	_, err = _do.Not().Or().Clauses().Take()
 	if err != nil {
 		t.Error("Not/Or/Clauses on table <{{.TableName}}> fail:", err)

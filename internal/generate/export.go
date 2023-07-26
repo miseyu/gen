@@ -144,7 +144,8 @@ func ConvertStructs(db *gorm.DB, structs ...interface{}) (metas []*QueryStructMe
 		meta := &QueryStructMeta{
 			S:               getPureName(name),
 			ModelStructName: name,
-			QueryStructName: capitalize(newStructName),
+			QueryDoName:     capitalize(newStructName),
+			QueryStructName: uncaptialize(newStructName),
 			StructInfo:      parser.Param{PkgPath: structType.PkgPath(), Type: name, Package: getPackageName(structType.String())},
 			Source:          model.Struct,
 			db:              db,
